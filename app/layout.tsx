@@ -34,15 +34,9 @@ export default function RootLayout({
       <body>
         <Header />
         {/* Links */}
-        <nav>
-          <ul>
-            <li>
-              <Link href="/produtos">Produtos</Link>
-            </li>
-            <li>
-              <Link href="/tecnologias">Tecnologias</Link>
-            </li>
-          </ul>
+        <nav className="flex flex-row gap-4">
+          <Link className="hover:underline" href="/produtos">Produtos</Link>
+          <Link className="hover:underline" href="/tecnologias">Tecnologias</Link>
         </nav>
         <main className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           {children}
