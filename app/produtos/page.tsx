@@ -4,7 +4,7 @@ import React from 'react'
 import useSWR from 'swr'
 import { Product } from '../../models/interfaces'
 
-export default function page() {
+export default function ProdutosPage() {
 
   const fetcher = (url: string) => fetch(url).then(res => res.json());
   const { data, error, isLoading } = useSWR<Product[], Error>('api/products', fetcher)
