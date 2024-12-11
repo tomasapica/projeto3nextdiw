@@ -15,7 +15,7 @@ export default function page() {
 
   return <>
     { data.map(product => (
-      <p> {product.title} </p>
+      <p key={product.id}> {product.title} </p>
       ))}
   </>
 }
