@@ -3,6 +3,7 @@
 import React from 'react'
 import useSWR from 'swr'
 import { Product } from '../../models/interfaces'
+import ProdutosCard from '@/components/ProdutosCard';
 
 export default function ProdutosPage() {
 
@@ -14,8 +15,15 @@ export default function ProdutosPage() {
   if (!data) return <div>No data!</div>
 
   return <>
-    { data.map(product => (
-      <p key={product.id}> {product.title} </p>
+    { data.map( p => (
+        <ProdutosCard
+          id={p.id}
+          title={p.title}
+          image={p.image}
+          price={p.price}
+          description={p.description}
+          category={p.category}
+        />  
       ))}
   </>
 }
