@@ -1,7 +1,7 @@
 import { Product } from '@/models/interfaces'
 import React from 'react'
 
-export default function ProdutosCard({ id, title, price, description, category, image, rating }: Product) {
+export default function ProdutosCard({ title, price, description, image, rating }: Product) {
   return (
     <article className="max-w-sm border border-gray-200 rounded-lg shadow-md p-4 bg-white mb-6">
       <h3 className="text-lg font-bold text-gray-800 mb-2">{title}</h3>
