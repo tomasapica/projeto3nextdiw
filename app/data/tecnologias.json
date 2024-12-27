@@ -2,85 +2,145 @@
     {
         "id": 1,
         "title": "HTML",
-        "image": "insert image here",
+        "price": 0,
         "description": "HyperText Markup Language",
-        "rating": 5
+        "category": "Markup Language",
+        "image": "insert image here",
+        "rating": {
+            "rate": 5,
+            "count": 1000
+        }
     },
     {
         "id": 2,
         "title": "CSS",
-        "image": "insert image here",
+        "price": 0,
         "description": "Cascading Style Sheets",
-        "rating": 5
+        "category": "Style Sheet Language",
+        "image": "insert image here",
+        "rating": {
+            "rate": 5,
+            "count": 1000
+        }
     },
     {
         "id": 3,
         "title": "JavaScript",
-        "image": "insert image here",
+        "price": 0,
         "description": "Programming language of the Web",
-        "rating": 5
+        "category": "Programming Language",
+        "image": "insert image here",
+        "rating": {
+            "rate": 5,
+            "count": 1000
+        }
     },
     {
         "id": 4,
         "title": "JSON",
-        "image": "insert image here",
+        "price": 0,
         "description": "JavaScript Object Notation",
-        "rating": 4
+        "category": "Data Format",
+        "image": "insert image here",
+        "rating": {
+            "rate": 4,
+            "count": 500
+        }
     },
     {
         "id": 5,
         "title": "API RESTful",
-        "image": "insert image here",
+        "price": 0,
         "description": "RESTful Web APIs",
-        "rating": 4
+        "category": "API",
+        "image": "insert image here",
+        "rating": {
+            "rate": 4,
+            "count": 500
+        }
     },
     {
         "id": 6,
         "title": "Swagger",
-        "image": "insert image here",
+        "price": 0,
         "description": "API design and documentation tool",
-        "rating": 3
+        "category": "Tool",
+        "image": "insert image here",
+        "rating": {
+            "rate": 3,
+            "count": 300
+        }
     },
     {
         "id": 7,
         "title": "GitHub",
-        "image": "insert image here",
+        "price": 0,
         "description": "Code hosting platform",
-        "rating": 5
+        "category": "Platform",
+        "image": "insert image here",
+        "rating": {
+            "rate": 5,
+            "count": 1000
+        }
     },
     {
         "id": 8,
         "title": "Codespaces",
-        "image": "insert image here",
+        "price": 0,
         "description": "Cloud development environment",
-        "rating": 4
+        "category": "Development Environment",
+        "image": "insert image here",
+        "rating": {
+            "rate": 4,
+            "count": 500
+        }
     },
     {
         "id": 9,
         "title": "GitHub Pages",
-        "image": "insert image here",
+        "price": 0,
         "description": "Hosting for static sites",
-        "rating": 3
+        "category": "Hosting",
+        "image": "insert image here",
+        "rating": {
+            "rate": 3,
+            "count": 300
+        }
     },
     {
         "id": 10,
         "title": "React.js",
-        "image": "insert image here",
+        "price": 0,
         "description": "JavaScript library for building UIs",
-        "rating": 5
+        "category": "Library",
+        "image": "insert image here",
+        "rating": {
+            "rate": 5,
+            "count": 1000
+        }
     },
     {
         "id": 11,
         "title": "Next.js",
-        "image": "insert image here",
+        "price": 0,
         "description": "React framework with server-side rendering",
-        "rating": 5
+        "category": "Framework",
+        "image": "insert image here",
+        "rating": {
+            "rate": 5,
+            "count": 1000
+        }
     },
     {
         "id": 12,
         "title": "Vercel",
-        "image": "insert image here",
+        "price": 0,
         "description": "Platform for serverless deployment",
-        "rating": 4
+        "category": "Platform",
+        "image": "insert image here",
+        "rating": {
+            "rate": 4,
+            "count": 500
+        }
     }
 ]

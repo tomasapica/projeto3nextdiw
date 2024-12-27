@@ -11,7 +11,7 @@ export default function TecnologiasCard({ id, title, image, description, rating 
         className="w-full h-48 object-cover rounded-md mb-4"
       />
       <p className="text-sm text-gray-600">{description}</p>
-      <p className="text-sm text-blue-500">Rating: {rating} Estrelas</p>
+      <p className="text-sm text-blue-500">Rating: {rating.rate} Estrelas</p>
     </article>
   );
 }

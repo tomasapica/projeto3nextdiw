@@ -12,8 +12,10 @@ export default function TecnologiasPage() {
         key={t.id}
         id={t.id}
         title={t.title}
-        image={t.image}
+        price={t.price}
         description={t.description}
+        category={t.category}
+        image={t.image}
         rating={t.rating}
       />
     ))}
