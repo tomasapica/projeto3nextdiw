@@ -12,7 +12,7 @@ export default function ProdutosCard({ title, price, description, image, rating 
       />
       <h4 className="text-lg font-semibold text-blue-600 mb-2">Preço: {price.toFixed(2)}€</h4>
       <p className="text-sm text-gray-600">{description}</p>
-      <h5 className="">{rating.rate}</h5>
+      <h5 className="text-sm text-blue-500">Rating: {rating.rate} Estrelas - {rating.count} Avaliações</h5>
     </article>
   )
 }
