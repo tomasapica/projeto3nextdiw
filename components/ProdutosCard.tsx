@@ -8,7 +8,7 @@ export default function ProdutosCard({ title, price, description, image, rating 
       <img
         src={image}
         alt="Imagem do produto"
-        className="w-full h-48 object-cover rounded-md mb-4"
+        className="w-full h-48 object-contain rounded-md mb-4"
       />
       <h4 className="text-lg font-semibold text-blue-600 mb-2">Preço: {price.toFixed(2)}€</h4>
       <p className="text-sm text-gray-600">{description}</p>
