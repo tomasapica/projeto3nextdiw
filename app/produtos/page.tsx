@@ -91,7 +91,7 @@ export default function ProdutosPage() {
           rating={p.rating}
           product={p}
           addItemToCart={addItemToCart}
-          isSelected={cart.includes(p)}
+          isSelected={cart.some(item => item.id === p.id)}
         />
       ))}
     </section>
