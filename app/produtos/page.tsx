@@ -8,16 +8,40 @@ import ProdutosCard from '@/components/ProdutosCard';
 export default function ProdutosPage() {
 
   //
-  // A. Gestão de Estados- useState
+  // A. Gestão de Estados (useState)
   const [cart, setCart] = useState<Product[]>([])
   const [search, setSearch] = useState("")
   const [filteredData, setFilteredData] = useState<Product[]>([])
 
 
   //
-  // B. Fetch de Dados - useSWR
+  // B. Fetch de Dados (useSWR)
   const fetcher = (url: string) => fetch(url).then(res => res.json());
   const { data, error, isLoading } = useSWR<Product[], Error>('api/products', fetcher)
+
+  const buy = () => {
+    fetch("api/deisishop/buy", {
+      method: "POST",
+      body: JSON.stringify({
+        products: cart.map(product => product.id),
+        name: "",
+        student: false,
+        coupon:"",
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText)
+      }
+      return response.json();
+    }).then((response) => {
+      setCart([])
+    }).catch(() => {
+      console.log("erro ao comprar")
+    })
+  }
 
 
   //
@@ -38,27 +62,25 @@ export default function ProdutosPage() {
 
 
   //
-  // F. Efeitos - useEffect
+  // F. Efeitos (useEffect)
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart))
-  }, [cart])
-
-  useEffect(() => {
-    const cart = localStorage.getItem("cart")
+    const localCart = localStorage.getItem("cart") || '[]';
     if(cart) {
-      setCart(JSON.parse(cart))
+      setCart(JSON.parse(localCart))
     }
   }, [])
 
   useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
+  useEffect(() => {
     if (data) {
       const newFilteredData = data.filter((p) => {
         return p.title.toLowerCase().includes(search.toLowerCase())
       })
       setFilteredData(newFilteredData)
     }
-
   }, [search, data])
 
 
@@ -91,7 +113,7 @@ export default function ProdutosPage() {
           rating={p.rating}
           product={p}
           addItemToCart={addItemToCart}
-          isSelected={cart.some(item => item.id === p.id)}
+          isSelected={cart.includes(p)}
         />
       ))}
     </section>
@@ -113,6 +135,12 @@ export default function ProdutosPage() {
           isSelected={true}
         />
       ))}
+      <button
+        className="bg-blue-400 rounded-md"
+        onClick={buy}
+      >
+        Comprar
+      </button>
     </section>
 
   </section>
