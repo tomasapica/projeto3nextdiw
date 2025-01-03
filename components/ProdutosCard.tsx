@@ -20,8 +20,8 @@ export interface ProductProps {
 }
 
 export default function ProdutosCard({ title, price, description, image, rating, product, addItemToCart, removeItemFromCart, isSelected }: ProductProps) {
-  return <article className={`max-w-sm border border-gray-200 rounded-lg p-4 ${isSelected ? 'bg-blue-100' : 'bg-white'} mb-6`}>
-    <h3 className="text-lg font-bold text-gray-800 mb-2">{title}</h3>
+  return <article className={`max-w-sm border border-gray-200 rounded-lg p-4 ${isSelected ? 'bg-blue-100' : 'bg-white'} mb-6 text-center`}>
+    <h3 className="text-lg font-bold text-gray-800 mb-2 uppercase">{title}</h3>
     <img
       src={image}
       alt="Imagem do produto"

@@ -29,7 +29,7 @@ body {
   /* Layout e Posicionamento */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to flex-start */
   align-items: center;
 
   /* Fundo e Estética */
@@ -46,12 +46,26 @@ nav {
 
 main {
   /* Reset e Box Model */
-  width: 320px;
-  height: 450px;
+  width: 90vw;
+  height: 90vh;
   padding: 20px;
   border-radius: 20px;
   overflow-y: auto;
 
   /* Fundo */
   background: #7f97b3;
+
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+section {
+  margin-bottom: 20px; /* Add margin to sections */
+}
+
+article {
+  margin: 10px; /* Add margin to product cards */
 }

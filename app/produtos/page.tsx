@@ -12,6 +12,8 @@ export default function ProdutosPage() {
   const [cart, setCart] = useState<Product[]>([])
   const [search, setSearch] = useState("")
   const [filteredData, setFilteredData] = useState<Product[]>([])
+  const [coupon, setCoupon] = useState("")
+  const [student, setStudent] = useState(false)
 
 
   //
@@ -25,8 +27,8 @@ export default function ProdutosPage() {
       body: JSON.stringify({
         products: cart.map(product => product.id),
         name: "",
-        student: false,
-        coupon:"",
+        student: student,
+        coupon: coupon,
       }),
       headers: {
         "Content-Type": "application/json"
@@ -102,60 +104,84 @@ export default function ProdutosPage() {
   if (isLoading) return <div>Loading...</div>
   if (!data) return <div>No data!</div>
 
-  return <section className="overflow-auto h-full flex flex-wrap justify-center">  
-
-    <section>
-      <h2>Pesquisa de Produtos</h2>
-      <input placeholder="Pesquisar"
-        value={search}
-        onChange={e => setSearch(e.target.value)} />
-    </section>
-
-    <section>
-      <h2>Selecione os seus Produtos</h2>
-      { filteredData.map( p => (
-        <ProdutosCard
-          key={p.id}
-          id={p.id}
-          title={p.title}
-          price={p.price}
-          description={p.description}
-          category={p.category}
-          image={p.image}
-          rating={p.rating}
-          product={p}
-          addItemToCart={addItemToCart}
-          removeItemFromCart={removeItemFromCart}
-          isSelected={false}
+  return (
+    <main className="overflow-auto h-full flex flex-col justify-start text-center">  
+      <section className="mb-4">
+        <h2>Pesquisa de Produtos</h2>
+        <input 
+          placeholder="Pesquisar"
+          value={search}
+          onChange={e => setSearch(e.target.value)} 
+          className="p-2 border border-gray-300 rounded"
         />
-      ))}
-    </section>
+      </section>
 
-    <section>
-      <h2>Produtos Selecionados</h2>
-      {cart.map((p, index) => (
-        <ProdutosCard
-          key={`${p.id}-${index}`}
-          id={p.id}
-          title={p.title}
-          price={p.price}
-          description={p.description}
-          category={p.category}
-          image={p.image}
-          rating={p.rating}
-          product={p}
-          addItemToCart={addItemToCart}
-          removeItemFromCart={removeItemFromCart}
-          isSelected={true}
-        />
-      ))}
-      <button
-        className="bg-blue-400 rounded-md"
-        onClick={buy}
-      >
-        Comprar
-      </button>
-    </section>
+      <section className="mb-4">
+        <h2>Selecione os seus Produtos</h2>
+        <div className="flex flex-wrap justify-center">
+          { filteredData.map( p => (
+            <ProdutosCard
+              key={p.id}
+              id={p.id}
+              title={p.title}
+              price={p.price}
+              description={p.description}
+              category={p.category}
+              image={p.image}
+              rating={p.rating}
+              product={p}
+              addItemToCart={addItemToCart}
+              removeItemFromCart={removeItemFromCart}
+              isSelected={false}
+            />
+          ))}
+        </div>
+      </section>
 
-  </section>
+      <section className="mb-4">
+        <h2>Produtos Selecionados</h2>
+        <div className="flex flex-wrap justify-center">
+          {cart.map((p, index) => (
+            <ProdutosCard
+              key={`${p.id}-${index}`}
+              id={p.id}
+              title={p.title}
+              price={p.price}
+              description={p.description}
+              category={p.category}
+              image={p.image}
+              rating={p.rating}
+              product={p}
+              addItemToCart={addItemToCart}
+              removeItemFromCart={removeItemFromCart}
+              isSelected={true}
+            />
+          ))}
+        </div>
+        <h3>Preço Total: {cart.reduce((acc, p) => acc + p.price, 0)}€</h3>
+        <p>
+          <label>És estudante do DEISI?</label>
+          <input 
+            type="checkbox" 
+            checked={student}
+            onChange={e => setStudent(e.target.checked)}
+          />
+        </p>
+        <p>
+          <label>Cupão de Desconto:</label>
+          <input 
+            type="text" 
+            value={coupon}
+            onChange={e => setCoupon(e.target.value)}
+          />
+        </p>
+        <button
+          className="bg-blue-400 rounded-md p-2"
+          onClick={buy}
+        >
+          Comprar
+        </button>
+      </section>
+    </main>
+  )
 }
