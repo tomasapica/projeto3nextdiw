@@ -38,7 +38,7 @@ export default function ProdutosPage() {
         throw new Error(response.statusText)
       }
       return response.json();
-    }).then((response) => {
+    }).then(() => {
       setCart([])
     }).catch(() => {
       console.log("erro ao comprar")
