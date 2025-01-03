@@ -60,6 +60,18 @@ export default function ProdutosPage() {
     )
   }
 
+  function removeItemFromCart(product: Product) {
+    setCart((prev) => {
+      const index = prev.findIndex(p => p.id === product.id);
+      if (index !== -1) {
+        const newCart = [...prev];
+        newCart.splice(index, 1);
+        return newCart;
+      }
+      return prev;
+    });
+  }
+
 
   //
   // F. Efeitos (useEffect)
@@ -113,16 +125,17 @@ export default function ProdutosPage() {
           rating={p.rating}
           product={p}
           addItemToCart={addItemToCart}
-          isSelected={cart.includes(p)}
+          removeItemFromCart={removeItemFromCart}
+          isSelected={false}
         />
       ))}
     </section>
 
     <section>
       <h2>Produtos Selecionados</h2>
-      {cart.map(p => (
+      {cart.map((p, index) => (
         <ProdutosCard
-          key={p.id}
+          key={`${p.id}-${index}`}
           id={p.id}
           title={p.title}
           price={p.price}
@@ -132,6 +145,7 @@ export default function ProdutosPage() {
           rating={p.rating}
           product={p}
           addItemToCart={addItemToCart}
+          removeItemFromCart={removeItemFromCart}
           isSelected={true}
         />
       ))}

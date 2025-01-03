@@ -15,10 +15,11 @@ export interface ProductProps {
   }
   product: Product
   addItemToCart: (product: Product) => void;
+  removeItemFromCart: (product: Product) => void;
   isSelected: boolean;
 }
 
-export default function ProdutosCard({ title, price, description, image, rating, product, addItemToCart, isSelected }: ProductProps) {
+export default function ProdutosCard({ title, price, description, image, rating, product, addItemToCart, removeItemFromCart, isSelected }: ProductProps) {
   return <article className={`max-w-sm border border-gray-200 rounded-lg p-4 ${isSelected ? 'bg-blue-100' : 'bg-white'} mb-6`}>
     <h3 className="text-lg font-bold text-gray-800 mb-2">{title}</h3>
     <img
@@ -31,7 +32,13 @@ export default function ProdutosCard({ title, price, description, image, rating,
     <h5 className="text-sm text-blue-500">Rating: {rating.rate} Estrelas - {rating.count} Avaliações</h5>
     <button 
       className="bg-blue-400 rounded-md"
-      onClick={() => addItemToCart(product)}
+      onClick={() => {
+        if (isSelected) {
+          removeItemFromCart(product)
+        } else {
+          addItemToCart(product)
+        }
+      }}
       >
         {isSelected ? "- Remover do Cesto" : "+ Adicionar ao Cesto"}
     </button>
