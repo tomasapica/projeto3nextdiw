@@ -15,7 +15,7 @@ export default function Page() {
         height={500}
         width={750}
         className="rounded-lg"
-      />
+      ></Image>
     </main>
   );
 }
